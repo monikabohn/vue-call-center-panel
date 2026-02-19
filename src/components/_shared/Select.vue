@@ -1,5 +1,5 @@
 <template>
-  <select :value="modelValue" @change="$emit('update:modelValue', $event.target.value)">
+  <select :value="modelValue" @change="onChange">
     <option
         v-for="option in options"
         :key="option.value"
@@ -11,8 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue'
-
 interface Option {
   value: string
   label: string
@@ -23,9 +21,14 @@ defineProps<{
   options: Option[]
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
+
+const onChange = (event: Event) => {
+  const target = event.target as HTMLSelectElement
+  emit('update:modelValue', target.value)
+}
 </script>
 
 <style lang="scss" scoped>

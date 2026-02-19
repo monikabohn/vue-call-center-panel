@@ -9,9 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue'
-
-const props = defineProps({
+defineProps({
   type: {
     type: String as () => 'button' | 'submit',
     default: 'button'
@@ -22,7 +20,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits<{
+defineEmits<{
   (e: 'click', event: MouseEvent): void
 }>()
 </script>
