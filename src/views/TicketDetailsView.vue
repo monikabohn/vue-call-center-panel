@@ -27,7 +27,7 @@
 
     <div class="ticket-details__field">
       <span class="ticket-details__label">Priorytet:</span>
-      <Badge :value="ticket?.priority" type="priority" />
+      <Badge :value="ticket.priority" type="priority" v-if="ticket?.priority" />
     </div>
 
     <div class="ticket-details__field">
